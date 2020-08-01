@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_live"
+            android:title="ICO LIVE" />
+        <item
+            android:id="@+id/nav_icoupcoming"
+            android:icon="@drawable/ic_update"
+            android:title="ICO UPCOMING" />
+        <item
+            android:id="@+id/nav_icofinished"
+            android:icon="@drawable/ic_finish"
+            android:title="ICO FINISHED" />
+
+    </group>
+</menu>
