@@ -16,8 +16,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText name,email,password;
+    private EditText name, email, password;
     public static ApiInterface apiInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,32 +31,29 @@ public class MainActivity extends AppCompatActivity {
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
     }
 
-    public void goToLogin(View view){
-        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+    public void goToLogin(View view) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void Register(View view){
+    public void Register(View view) {
 
         String name = this.name.getText().toString().trim();
         String email = this.email.getText().toString().trim();
         String password = this.password.getText().toString().trim();
 
-        if(TextUtils.isEmpty(name)){
+        if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(email)){
+        } else if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
             CreateUserNow();
         }
     }
 
-    private void CreateUserNow(){
+    private void CreateUserNow() {
 //        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
 
         final ProgressDialog dialog = new ProgressDialog(this);
@@ -63,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
 
         Call<Users> call = apiInterface.performRegister(name.getText().toString()
-                ,email.getText().toString(),
+                , email.getText().toString(),
                 password.getText().toString());
 
         call.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
-                Toast.makeText(MainActivity.this, "Registered Successfully" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
 

@@ -2,7 +2,7 @@ package com.example.loginretrofit2;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Post{
+public class Post {
     //private String name;
     //@SerializedName("description")
     private int userId;
@@ -44,18 +44,21 @@ public class Post{
 //        return timezone;
 //    }
 
-public int getUserId(){
-    return userId;
-}
-public int getId(){
-    return id;
-}
-public String getTitle(){
-    return title;
-}
-public String getText(){
-    return text;
-}
+    public int getUserId() {
+        return userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getText() {
+        return text;
+    }
 
 
 }

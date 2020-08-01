@@ -50,6 +50,7 @@ public class data extends AppCompatActivity implements NavigationView.OnNavigati
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -57,17 +58,17 @@ public class data extends AppCompatActivity implements NavigationView.OnNavigati
         switch (item.getItemId()) {
             case R.id.nav_home:
                 //getSupportFragmentManager().beginTransaction().replace(R.id.container, new home()).addToBackStack(null).commit();
-                fragmentTransaction.replace(R.id.container,new icolive());
+                fragmentTransaction.replace(R.id.container, new icolive());
                 fragmentTransaction.addToBackStack("home");
                 fragmentTransaction.commit();
                 break;
             case R.id.nav_icoupcoming:
-                fragmentTransaction.replace(R.id.container,new icoupcoming());
+                fragmentTransaction.replace(R.id.container, new icoupcoming());
                 fragmentTransaction.addToBackStack("home");
                 fragmentTransaction.commit();
                 break;
             case R.id.nav_icofinished:
-                fragmentTransaction.replace(R.id.container,new icofinished());
+                fragmentTransaction.replace(R.id.container, new icofinished());
                 fragmentTransaction.addToBackStack("home");
                 fragmentTransaction.commit();
                 break;
@@ -75,6 +76,7 @@ public class data extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {

@@ -23,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class icolive extends Fragment {
     TextView textViewResult;
     private View rootview;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,25 +41,26 @@ public class icolive extends Fragment {
         call.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-            if(!response.isSuccessful()){
-                textViewResult.setText("Code:"+response.code());
-                return;
-            }
-            List<Post> posts = response.body();
+                if (!response.isSuccessful()) {
+                    textViewResult.setText("Code:" + response.code());
+                    return;
+                }
+                List<Post> posts = response.body();
                 assert posts != null;
-                for(Post post : posts){
-                String content ="";
-                content += "ID :" +post.getId() +"\n";
-                content += "USER ID :" +post.getUserId() +"\n";
-                content += "TITLE :" +post.getTitle() +"\n";
-                content += "TEXT :" +post.getText() +"\n";
-                textViewResult.append(content);
-            }
+                for (Post post : posts) {
+                    String content = "";
+                    content += "ID :" + post.getId() + "\n";
+                    content += "USER ID :" + post.getUserId() + "\n";
+                    content += "TITLE :" + post.getTitle() + "\n";
+                    content += "TEXT :" + post.getText() + "\n";
+                    textViewResult.append(content);
+                }
 
             }
+
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-             textViewResult.setText(t.getMessage());
+                textViewResult.setText(t.getMessage());
             }
         });
         return rootview;

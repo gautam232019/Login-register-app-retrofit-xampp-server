@@ -16,7 +16,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText email,password;
+    private EditText email, password;
     public static ApiInterface apiInterface;
 
     @Override
@@ -30,23 +30,21 @@ public class LoginActivity extends AppCompatActivity {
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
     }
 
-    public void goToRegister(View view){
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+    public void goToRegister(View view) {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void Login(View view){
+    public void Login(View view) {
 
         String email = this.email.getText().toString().trim();
         String password = this.password.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
             SignInNow();
         }
     }
@@ -56,13 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         dialog.setMessage("Please Wait.......");
         dialog.show();
 
-        Call<Users> call = apiInterface.performLogin(email.getText().toString(),password.getText().toString());
+        Call<Users> call = apiInterface.performLogin(email.getText().toString(), password.getText().toString());
         call.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
-                Toast.makeText(LoginActivity.this, "Logged in Successfully with"+response.body().getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Logged in Successfully with" + response.body().getId(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
-                Intent intent = new Intent(LoginActivity.this,data.class);
+                Intent intent = new Intent(LoginActivity.this, data.class);
                 startActivity(intent);
             }
 
@@ -70,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<Users> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Something went wrong, Please try again!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
-                Intent intent = new Intent(LoginActivity.this,data.class);
+                Intent intent = new Intent(LoginActivity.this, data.class);
                 startActivity(intent);
             }
         });
