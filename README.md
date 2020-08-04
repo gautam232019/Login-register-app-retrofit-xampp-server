@@ -21,4 +21,6 @@ Side navigation drawer with three fragments
 
 
 ![WhatsApp Image 2020-08-01 at 20 48 49](https://user-images.githubusercontent.com/56038800/89260447-ea4b9500-d649-11ea-8804-1ff5255a7461.jpeg)
+
+
 Fake json api data on home screen
